@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Payline — Payments API for Africa</title>
+<meta name="description" content="Accept M-Pesa, cards and bank transfers with one API.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a href="#" class="logo"><span class="dot"></span>Payline</a>
+    <nav>
+      <a href="#methods">Methods</a><a href="#pricing">Pricing</a><a href="#docs">Docs</a>
+    </nav>
+    <div class="nav-cta"><a href="#" class="link">Sign in</a><a href="#pricing" class="btn sm">Get API keys</a></div>
+  </div>
+</header>
+
+<main>
+<section class="hero wrap">
+  <div class="hero-text">
+    <span class="pill">● All systems operational</span>
+    <h1>Payments infrastructure<br>for <span class="grad">builders</span>.</h1>
+    <p>One API to collect M-Pesa, cards and bank transfers. Go live in an afternoon, not a quarter.</p>
+    <div class="actions"><a href="#pricing" class="btn">Start building</a><a href="#docs" class="btn ghost">Read the docs</a></div>
+  </div>
+  <div class="code">
+    <div class="code-bar">
+      <div class="tabs" role="tablist">
+        <button class="tab active" data-tab="curl" role="tab">cURL</button>
+        <button class="tab" data-tab="js" role="tab">JavaScript</button>
+        <button class="tab" data-tab="py" role="tab">Python</button>
+      </div>
+      <button id="copy" class="copy">Copy</button>
+    </div>
+<pre id="code-curl" class="snippet show"><code>curl https://api.payline.dev/v1/charges \
+  -u sk_test_4eC39Hq:  \
+  -d amount=250000 \
+  -d currency=KES \
+  -d method=mpesa \
+  -d phone=254712345678</code></pre>
+<pre id="code-js" class="snippet"><code>import Payline from "payline";
+const payline = new Payline("sk_test_4eC39Hq");
+
+const charge = await payline.charges.create({
+  amount: 250000,
+  currency: "KES",
+  method: "mpesa",
+  phone: "254712345678",
+});</code></pre>
+<pre id="code-py" class="snippet"><code>import payline
+payline.api_key = "sk_test_4eC39Hq"
+
+charge = payline.Charge.create(
+    amount=250000,
+    currency="KES",
+    method="mpesa",
+    phone="254712345678",
+)</code></pre>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="wrap stats-in">
+    <div><b>99.99%</b><span>Uptime, last 12 months</span></div>
+    <div><b>&lt;180ms</b><span>Median API latency</span></div>
+    <div><b>12M+</b><span>Transactions processed</span></div>
+    <div><b>8,400</b><span>Businesses onboarded</span></div>
+  </div>
+</section>
+
+<section id="methods" class="wrap sec">
+  <h2>Every way your customers pay</h2>
+  <p class="sub">One integration. Three rails. Unified webhooks and reporting.</p>
+  <div class="grid3">
+    <article class="card"><div class="ico">M</div><h3>M-Pesa</h3><p>STK Push, Paybill and Till. Instant confirmation via webhook.</p></article>
+    <article class="card"><div class="ico">▭</div><h3>Cards</h3><p>Visa and Mastercard with 3-D Secure, tokenization and saved cards.</p></article>
+    <article class="card"><div class="ico">⇄</div><h3>Bank transfer</h3><p>Pay-by-bank with auto-reconciliation and virtual account numbers.</p></article>
+  </div>
+</section>
+
+<section id="docs" class="wrap sec">
+  <h2>Docs developers actually read</h2>
+  <p class="sub">Clear guides, a typed SDK and a sandbox for every account.</p>
+  <div class="docs">
+    <aside class="side">
+      <h4>Getting started</h4>
+      <a class="on" href="#docs">Quickstart</a><a href="#docs">Authentication</a><a href="#docs">Test mode</a>
+      <h4>Payments</h4>
+      <a href="#docs">Charges</a><a href="#docs">M-Pesa STK Push</a><a href="#docs">Refunds</a>
+      <h4>Webhooks</h4>
+      <a href="#docs">Events</a><a href="#docs">Signatures</a>
+    </aside>
+    <div class="doc-main">
+      <span class="tag">POST</span> <code class="path">/v1/charges</code>
+      <h3>Create a charge</h3>
+      <p>Creates a charge against a customer's M-Pesa number, card or bank account.</p>
+      <table>
+        <tr><td><code>amount</code> <i>integer</i></td><td>Amount in the smallest currency unit.</td></tr>
+        <tr><td><code>currency</code> <i>string</i></td><td>Three-letter ISO code, e.g. <code>KES</code>.</td></tr>
+        <tr><td><code>method</code> <i>string</i></td><td><code>mpesa</code>, <code>card</code> or <code>bank</code>.</td></tr>
+        <tr><td><code>phone</code> <i>optional</i></td><td>Required for M-Pesa, format 2547XXXXXXXX.</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="pricing" class="wrap sec">
+  <h2>Simple, transparent pricing</h2>
+  <p class="sub">No setup fees. No monthly minimums on Starter.</p>
+  <div class="grid3">
+    <article class="card price">
+      <h3>Starter</h3><div class="amt">1.5%<small> per transaction</small></div>
+      <ul><li>M-Pesa and cards</li><li>Sandbox and test keys</li><li>Email support</li></ul>
+      <a href="#" class="btn ghost block">Get started</a>
+    </article>
+    <article class="card price hot">
+      <span class="badge">Most popular</span>
+      <h3>Growth</h3><div class="amt">KES 4,999<small> /mo + 1.2%</small></div>
+      <ul><li>Everything in Starter</li><li>Bank transfers</li><li>Webhooks and reporting</li><li>Priority support</li></ul>
+      <a href="#" class="btn block">Start free trial</a>
+    </article>
+    <article class="card price">
+      <h3>Enterprise</h3><div class="amt">Custom</div>
+      <ul><li>Volume discounts</li><li>99.99% uptime SLA</li><li>Dedicated engineer</li></ul>
+      <a href="#" class="btn ghost block">Talk to sales</a>
+    </article>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <div><a href="#" class="logo"><span class="dot"></span>Payline</a><p>Payments infrastructure for builders.</p></div>
+    <div><h4>Product</h4><a href="#methods">Payment methods</a><a href="#pricing">Pricing</a><a href="#">Status</a></div>
+    <div><h4>Developers</h4><a href="#docs">Docs</a><a href="#">API reference</a><a href="#">Changelog</a></div>
+    <div><h4>Company</h4><a href="#">About</a><a href="#">Careers</a><a href="#">Contact</a></div>
+  </div>
+  <p class="copyr wrap">© 2026 Payline. A fictional product for demonstration.</p>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>
